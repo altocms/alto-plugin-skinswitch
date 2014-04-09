@@ -7,10 +7,10 @@
 
         #skinswitch-list {
             background-color: white;
-            border: 1px solid black;
+            border: 1px solid #777;
             display: block;
             padding: 10px;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             z-index: 999;
@@ -63,6 +63,12 @@
                 list.css({top: button.offset().top + 'px', left: posLeft + 'px'});
             }
             list.hide();
+            list.css({
+                backgroundColor: button.css('background-color'),
+                color: button.css('color'),
+                border: button.css('border'),
+                boxShadow: button.css('box-shadow')
+            });
             var timeout = null;
             var inArea = 0;
             button.mouseover(function () {
@@ -74,7 +80,7 @@
                         clearInterval(timeout);
                     }
                 }, 2000);
-                console.log('button.mouseover', inArea);
+                //console.log('button.mouseover', inArea);
             });
             button.mouseout(function () {
                 --inArea;
