@@ -16,8 +16,10 @@ class PluginSkinswitch_WidgetSkinswitch extends Widget {
         $sGetSkinParam = Config::Get('plugin.skinswitch.get_skin_name');
         $sGetThemeParam = Config::Get('plugin.skinswitch.get_theme_name');
 
-        $sCurrentSkin = Config::Get('view.skin');
-        $sCurrentTheme = Config::Get('view.theme');
+        //$sCurrentSkin = Config::Get('view.skin');
+        //$sCurrentTheme = Config::Get('view.theme');
+        $sCurrentSkin = $this->Viewer_GetConfigSkin();
+        $sCurrentTheme = $this->Viewer_GetConfigTheme();
 
         $aSkinswitchSkins = array();
         foreach($aSkins as $sSkin) {

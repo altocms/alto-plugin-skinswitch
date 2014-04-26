@@ -10,9 +10,7 @@
             border: 1px solid #777;
             display: block;
             padding: 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
+            position: absolute;
             z-index: 999;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
@@ -51,17 +49,24 @@
     <script language="javascript">
 
         $(function () {
-            var button = $('#skinswitch-button');
+            var button = $('#skinswitch-button'),
+                    list = $('#skinswitch-list').appendTo('body'),
+                    posTop, posLeft;
+            var resizeFunc = function () {
+                posTop = button.offset().top + list.outerHeight() - $(window).height() + 5;
+                posLeft = button.offset().left - list.outerWidth() - 5;
+                if (posTop > 0) {
+                    list.css({top: (button.offset().top - posTop) + 'px', left: posLeft + 'px'});
+                } else {
+                    list.css({top: button.offset().top + 'px', left: posLeft + 'px'});
+                }
+            };
 
-            var list = $('#skinswitch-list').appendTo('body');
-            var posTop = button.offset().top + list.outerHeight() - $(window).height() + 5;
-            var posLeft = button.offset().left - list.outerWidth() - 5;
+            $(window).resize(function () {
+                resizeFunc();
+            });
+            resizeFunc();
 
-            if (posTop > 0) {
-                list.css({top: (button.offset().top - posTop) + 'px', left: posLeft + 'px'});
-            } else {
-                list.css({top: button.offset().top + 'px', left: posLeft + 'px'});
-            }
             list.hide();
             list.css({
                 backgroundColor: button.css('background-color'),
@@ -108,12 +113,12 @@
         <a href="#">
             <span class="glyphicon glyphicon-leaf"></span>
         </a>
+        <div id="skinswitch-list" style="display: none;">
+            {foreach $aSkinswitchSkins as $aSkinTheme}
+                <a class="skinswitch-item skinswitch-level-{$aSkinTheme['level']} {if $aSkinTheme['current']}skinswitch-item-current{/if}" href="{$aSkinTheme['link']}">
+                    {$aSkinTheme['name']}
+                </a>
+            {/foreach}
+        </div>
     </section>
-    <div id="skinswitch-list" style="display: none;">
-        {foreach $aSkinswitchSkins as $aSkinTheme}
-            <a class="skinswitch-item skinswitch-level-{$aSkinTheme['level']} {if $aSkinTheme['current']}skinswitch-item-current{/if}" href="{$aSkinTheme['link']}">
-                {$aSkinTheme['name']}
-            </a>
-        {/foreach}
-    </div>
 {/if}

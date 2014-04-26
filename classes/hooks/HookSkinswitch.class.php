@@ -33,8 +33,8 @@ class PluginSkinswitch_HookSkinswitch extends Hook {
         $sGetSkinParam = Config::Get('plugin.skinswitch.get_skin_name');
         $sGetThemeParam = Config::Get('plugin.skinswitch.get_theme_name');
 
-        $sGetSkin = getRequest($sGetSkinParam, null, 'get');
-        $sGetTheme = getRequest($sGetThemeParam, null, 'get');
+        $sGetSkin = F::GetRequest($sGetSkinParam, null, 'get');
+        $sGetTheme = F::GetRequest($sGetThemeParam, null, 'get');
 
         $sSessSkin = (isset($_SESSION['skinswitch.skin_name']) ? $_SESSION['skinswitch.skin_name'] : '');
         $sSessTheme = (isset($_SESSION['skinswitch.theme_name']) ? $_SESSION['skinswitch.theme_name'] : '');
