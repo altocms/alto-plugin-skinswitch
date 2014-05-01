@@ -44,7 +44,7 @@ class PluginSkinswitch_WidgetSkinswitch extends Widget {
             }
         }
         $this->Viewer_Assign('aSkinswitchSkins', $aSkinswitchSkins);
-        return $this->Viewer_Fetch(Plugin::GetTemplatePath(__CLASS__) . 'toolbar.skinswitch.tpl');
+        return $this->Viewer_Fetch(Plugin::GetTemplateDir(__CLASS__) . 'toolbar.skinswitch.tpl');
     }
 
 }

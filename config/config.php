@@ -8,6 +8,8 @@
  *----------------------------------------------------------------------------
  */
 
+$config['default']['skin']['ls'] = 'ls-default';
+
 $config['get_skin_name'] = 'skin';
 $config['get_theme_name'] = 'theme';
 
