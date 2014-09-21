@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
+    <id>skinswitch</id>
     <name>
         <lang name="default">Skin Switch</lang>
     </name>
@@ -8,9 +9,10 @@
     </author>
     <homepage>http://altocms.ru/</homepage>
     <version>1.1.0</version>
+    <dirname>skinswitch</dirname>
     <requires>
         <alto>
-            <version>1.0-rc</version>
+            <version>1.0</version>
         </alto>
     </requires>
     <description>
